@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -27,11 +26,13 @@ public class VendaDetController {
 	private VendaDetService vendaDetService;
 
 	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public List<VendaDet> listarTodos() {
 		return vendaDetService.listarTodasVendasDet();
 	}
 
 	@GetMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
 	public VendaDet buscarPorId(@PathVariable("id") Long id) {
 		return vendaDetService.buscarVendaDetPorId(id);
 	}
@@ -42,12 +43,8 @@ public class VendaDetController {
 		return vendaDetService.adicionarVendaDet(vendaDet);
 	}
 
-	@PutMapping
-	public VendaDet atualizar(@RequestBody VendaDet vendaDet) {
-		return vendaDetService.atualizarVendaDet(vendaDet);
-	}
-
 	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletar(@PathVariable("id") Long id) {
 		vendaDetService.deletarVendaDetPorId(id);
 	}

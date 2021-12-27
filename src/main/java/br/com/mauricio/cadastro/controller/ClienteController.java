@@ -27,11 +27,13 @@ public class ClienteController {
 	private ClienteService clienteService;
 
 	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public List<Cliente> listarTodos() {
 		return clienteService.listarTodosClientes();
 	}
 
 	@GetMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
 	public Cliente buscarPorId(@PathVariable("id") Long id) {
 		return clienteService.buscarClientePorId(id);
 	}
@@ -43,11 +45,13 @@ public class ClienteController {
 	}
 
 	@PutMapping
+	@ResponseStatus(HttpStatus.ACCEPTED)
 	public Cliente atualizar(@RequestBody Cliente cliente) {
 		return clienteService.atualizarCliente(cliente);
 	}
 
 	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletar(@PathVariable("id") Long id) {
 		clienteService.deletarClientePorId(id);
 	}

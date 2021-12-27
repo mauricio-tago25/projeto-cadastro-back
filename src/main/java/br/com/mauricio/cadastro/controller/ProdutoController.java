@@ -27,11 +27,13 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 
 	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public List<Produto> listarTodos() {
 		return produtoService.listarTodosProdutos();
 	}
 
 	@GetMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
 	public Produto buscarPorId(@PathVariable("id") Long id) {
 		return produtoService.buscarProdutoPorId(id);
 	}
@@ -43,11 +45,13 @@ public class ProdutoController {
 	}
 
 	@PutMapping
+	@ResponseStatus(HttpStatus.ACCEPTED)
 	public Produto atualizar(@RequestBody Produto produto) {
 		return produtoService.atualizarProduto(produto);
 	}
 
 	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletar(@PathVariable("id") Long id) {
 		produtoService.deletarProdutoPorId(id);
 	}

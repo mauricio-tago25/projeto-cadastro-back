@@ -25,11 +25,13 @@ public class VendaController {
 	private VendaService vendaService;
 
 	@GetMapping
+	@ResponseStatus(HttpStatus.OK)
 	public List<Venda> listarTodos() {
 		return vendaService.listarTodasVendas();
 	}
 
 	@GetMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
 	public Venda buscarPorId(@PathVariable("id") Long id) {
 		return vendaService.buscarVendaPorId(id);
 	}

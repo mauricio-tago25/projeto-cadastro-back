@@ -26,15 +26,6 @@ public class VendaDetService {
 		return vendaDetRepository.save(vendaDet);
 	}
 
-	public VendaDet atualizarVendaDet(VendaDet vendaDet) {
-		VendaDet vendaDetExistente = vendaDetRepository.findById(vendaDet.getId()).orElse(null);
-		vendaDetExistente.setIdVenda(vendaDet.getIdVenda());
-		vendaDetExistente.setIdProduto(vendaDet.getIdProduto());
-		vendaDetExistente.setQuantidade(vendaDet.getQuantidade());
-		vendaDetExistente.setPrecoTotal(vendaDet.getPrecoTotal());
-		return vendaDetRepository.save(vendaDetExistente);
-	}
-
 	public void deletarVendaDetPorId(Long id) {
 		vendaDetRepository.deleteById(id);
 	}

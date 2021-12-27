@@ -15,9 +15,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "venda")
 public class Venda {
@@ -35,7 +39,7 @@ public class Venda {
 
 	@Column(name = "valor_total")
 	private Double valorTotal;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "idVenda")
 	private List<VendaDet> vendasDet;
