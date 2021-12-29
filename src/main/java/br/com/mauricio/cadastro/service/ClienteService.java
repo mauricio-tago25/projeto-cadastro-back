@@ -19,7 +19,8 @@ public class ClienteService {
 	}
 
 	public Cliente buscarClientePorId(Long id) {
-		return clienteRepository.findById(id).orElse(null);
+		return clienteRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Não foi possível encontrar cliente com o ID " + id));
 	}
 
 	public Cliente adicionarCliente(Cliente cliente) {
@@ -37,5 +38,4 @@ public class ClienteService {
 	public void deletarClientePorId(Long id) {
 		clienteRepository.deleteById(id);
 	}
-
 }

@@ -19,7 +19,8 @@ public class ProdutoService {
 	}
 
 	public Produto buscarProdutoPorId(Long id) {
-		return produtoRepository.findById(id).orElse(null);
+		return produtoRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Não foi possível encontrar produto com o ID " + id));
 	}
 
 	public Produto adicionarProduto(Produto produto) {

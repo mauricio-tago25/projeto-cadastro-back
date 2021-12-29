@@ -19,7 +19,8 @@ public class VendaService {
 	}
 
 	public Venda buscarVendaPorId(Long id) {
-		return vendaRepository.findById(id).orElse(null);
+		return vendaRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Não foi possível encontrar venda com o ID " + id));
 	}
 
 	public Venda adicionarVendas(Venda venda) {

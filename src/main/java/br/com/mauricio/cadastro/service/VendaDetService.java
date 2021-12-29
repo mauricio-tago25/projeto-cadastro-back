@@ -19,7 +19,8 @@ public class VendaDetService {
 	}
 
 	public VendaDet buscarVendaDetPorId(Long id) {
-		return vendaDetRepository.findById(id).orElse(null);
+		return vendaDetRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Não foi possível encontrar venda det com o ID " + id));
 	}
 
 	public VendaDet adicionarVendaDet(VendaDet vendaDet) {
